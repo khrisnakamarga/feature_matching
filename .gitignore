@@ -1,3 +1,5 @@
 build/
 image*
+images/*
 .vscode/
+docker-compose.yml
