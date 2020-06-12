@@ -1,0 +1,19 @@
+version: "3.5"
+services:
+  feature_detection:
+    container_name: feature_detection
+    image: kkamarga/feature_detection:latest
+    user: root
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ./images:/root/feature_detection/images
+    environment:
+      - DISPLAY
+      - QT_X11_NO_MITSHM=1
+      - ORION_NETWORK_IFACE=wlp4s0
+    # allows us to attach to the container and examine it in development
+    stdin_open: true
+    tty: true
